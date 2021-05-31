@@ -1,17 +1,48 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React,{useState} from 'react';//importamos el modulo
+import ReactDOM from 'react-dom';//importamos react dom
+import Usuario from './componentes/Usuario'
+import {Titulo} from './componentes/Titulo'
+import FormularioInicioSesion from './componentes/FormularioInicioSesion'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
+const App=()=>{
+  const [sesion,cambiarEstadoSesion]= useState(true);//sesion es el estado y cambiar Estado es la funcion para cambiar el estado
+ 
+  return(
+     //fragmentos
+  <>
+  {sesion === true?
+  
+  <div>
+   <Titulo usuario="melisa" color ="pink"/>
+  <Usuario/>
+  <button onClick={()=>cambiarEstadoSesion(false)}>Cerrar sesion</button>
+  </div>
+  
+   ://condicionales
+   <div>
+  <p> NO HAS INICIADO SESION</p>
+  <FormularioInicioSesion/>
+  </div>
+  }  
+  </>
+  );
+};
+
+//const verificarSesion =(sesion)=>{
+  //if(sesion===true){
+  //  return JSX;
+  //}else{
+  //  return <h1>no iniciaste la sesion</h1>
+
+   // }
+ // }
+
+//}
+
+
+ReactDOM.render(<App/>,document.getElementById('root'));
+
+
+
